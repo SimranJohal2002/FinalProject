@@ -1,0 +1,1 @@
+This is the collaborative filtering recommendation system for books. Download dataset from: https://www.kaggle.com/datasets/saurabhbagchi/books-dataset/data
