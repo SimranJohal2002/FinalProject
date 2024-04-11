@@ -1,0 +1,1 @@
+This is a failed prototype as I didn't have enough time to create a new collaborative filtering algorithm for the books recommendation system. Download the dataset from: https://www.kaggle.com/datasets/saurabhbagchi/books-dataset/data
