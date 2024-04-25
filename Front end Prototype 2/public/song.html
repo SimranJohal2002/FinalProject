@@ -1,0 +1,236 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song Recommendation System</title>
+    <style>
+        table {
+            margin-top: 3rem;
+            display: none;
+        }
+
+        table.active {
+            display: table;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Song Recommendation System</h1>
+    <form id="recommendForm1" action="/recommend1" method="POST">
+        <label for="title">Enter Title:</label>
+        <input type="text" id="title" name="title" required>
+        <button type="submit">Get Recommendations</button>
+    </form> -->
+
+    <!-- Make table to show recommendation -->
+    <!-- <table id="recommendations" border="1" cellpadding="10" cellspacing="0">
+        <thead>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Genres</th>
+        </thead>
+
+        <tbody>
+
+        </tbody>
+
+    </table>
+
+    <script>
+        document.getElementById('recommendForm1').addEventListener('submit', async function (event) {
+            event.preventDefault();
+            const title = document.getElementById('title').value;
+            if (!title.length) return false;
+
+            const response = await fetch('/recommend1', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ title })
+            });
+            const data = await response.json();
+            displayRecommendations(data);
+        });
+
+        function displayRecommendations(data) {
+            let allData = data.result.data;
+            if (!allData || allData.length === 0) {
+                console.log(allData);
+                alert("No recommendations found")
+                document.querySelector('#recommendations').classList.remove('active');
+                return false;
+            }
+            let trs = '';
+            allData.forEach((item) => {
+                trs += `
+                    <tr>
+                        <td>${item.id}</td>
+                        <td>${item.title}</td>
+                        <td>${item.genres}</td>
+                    </tr>
+                `;
+            });
+
+            document.querySelector('#recommendations tbody').innerHTML = trs;
+            document.querySelector('#recommendations').classList.add('active');
+
+        }
+    </script>
+</body>
+
+</html> -->
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Song Recommendation System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #007bff;
+            white-space: nowrap;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+            margin: 10px;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            /* width: 100%; */
+            margin: 20px auto;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: none;
+        }
+
+        th,
+        td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        tr:hover {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Song Recommendation System</h1>
+    <form id="recommendForm1" action="/recommend1" method="POST">
+        <label for="title">Enter Title:</label>
+        <input type="text" id="title" name="title" required>
+        <button type="submit">Get Recommendations</button>
+    </form>
+
+    <!-- Make table to show recommendation -->
+    <table id="recommendations" border="1" cellpadding="10" cellspacing="0">
+        <thead>
+            <th>ID</th>
+            <th>Title</th>
+            <!-- <th>Genres</th> -->
+        </thead>
+
+        <tbody>
+
+        </tbody>
+
+    </table>
+
+    <script>
+        document.getElementById('recommendForm1').addEventListener('submit', async function (event) {
+            event.preventDefault();
+            const title = document.getElementById('title').value;
+            if (!title.length) return false;
+
+            const response = await fetch('/recommend1', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ title })
+            });
+            const data = await response.json();
+            displayRecommendations(data);
+        });
+
+        function displayRecommendations(data) {
+            let allData = data.result.data;
+            if (!allData || allData.length === 0) {
+                console.log(allData);
+                alert("No recommendations found")
+                document.querySelector('#recommendations').classList.remove('active');
+                return false;
+            }
+            let trs = '';
+            allData.forEach((item, index) => {
+                trs += `
+                    <tr>
+                        <td>${index + 1}</td>
+                        <td>${item.title}</td>
+                        
+                    </tr>
+                `;
+            });
+
+            document.querySelector('#recommendations tbody').innerHTML = trs;
+            document.querySelector('#recommendations').style.display = 'table';
+        }
+    </script>
+    <button class="button" onclick="window.location.href='index.html'">Go Back</button>
+</body>
+
+</html>
